@@ -173,7 +173,8 @@ function selectCard(self) {
 }
 
 function attacked(nummer) {
-    if (!document.getElementById("weapon").checked || values[nummer.value] > values[activeEnemy.value] && activeWeapon != null || activeWeapon == null) {
+    console.log(activeWeapon);
+    if (!document.getElementById("weapon").checked || values[nummer.value] > values[activeEnemy.value] && activeWeapon != null || activeWeapon == " ") {
         health -= values[nummer.value];
     } 
     else {
@@ -186,13 +187,15 @@ function attacked(nummer) {
         gameOver();
     }
 }
-
+if (localStorage.highScore == null) {
+    localStorage.highScore = 0;
+}
 function win() {
     localStorage.highScore = health;
 }
 function gameOver() {
     console.log("Game Over")
-    alert("You lost    HighScore: " + localStorage.highScore);
+    alert("You lost\nHighScore: " + localStorage.highScore);
     location.reload(); 
 }
 
